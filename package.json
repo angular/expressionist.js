@@ -1,6 +1,6 @@
 {
   "name": "expressionist",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Expression parser and evaluator for Angular 2.0.",
   "main": "node/index.js",
   "homepage": "https://github.com/angular/expressionist.js",
@@ -16,7 +16,7 @@
     "watchtower": "git://github.com/angular/watchtower.js#dist"
   },
   "devDependencies": {
-    "pipe": "git://github.com/angular/pipe#assert",
+    "pipe": "angular/pipe",
     "gulp-connect": "~1.0.5"
   },
   "scripts": {
