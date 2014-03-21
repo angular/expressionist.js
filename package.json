@@ -12,7 +12,8 @@
     "url": "https://github.com/angular/expressionist.js/issues"
   },
   "dependencies": {
-    "es6-shim": "~0.9.2"
+    "es6-shim": "~0.9.2",
+    "unicorns": "git://github.com/angular/watchtower.js#dist"
   },
   "devDependencies": {
     "pipe": "git://github.com/angular/pipe#assert",

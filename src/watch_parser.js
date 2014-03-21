@@ -1,14 +1,14 @@
 import {AST, ContextReferenceAST, CollectionAST, MethodAST,
-        FieldReadAST, PureFunctionAST, ConstantAST} from '???ast';
+        FieldReadAST, PureFunctionAST, ConstantAST} from 'watchtower/ast';
 
-import {CollectionChangeRecord} from '???change_detection';
+import {CollectionChangeRecord} from 'watchtower/change_detection';
 
 import {Parser} from './parser';
 
 import {Expression,ArrayOfExpression,Chain,Filter,Assign,
         Conditional, AccessScope, AccessMember, AccessKeyed, 
         CallScope, CallFunction, CallMember, PrefixNot,
-        Binary, LiteralPrimitive, LiteralArray, LiteralObject, LiteralString} from './ast';
+        Binary, LiteralPrimitive, LiteralArray, LiteralObject, LiteralString, Literal} from './ast';
 
 var scopeContextRef = new ContextReferenceAST();
 

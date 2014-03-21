@@ -17,6 +17,7 @@ require.config({
   baseUrl: '/base',
 
   paths: {
+    'watchtower': './node_modules/watchtower/dist/amd',
     'assert': './node_modules/pipe/node_modules/assert/dist/amd/assert'
   },
 
