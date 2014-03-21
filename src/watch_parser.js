@@ -62,11 +62,11 @@ class WatchVisitor {
   }
 
   visitCallScope(exp:CallScope) {
-    this.ast = new MethodAST(this.contextRef, exp.name, this._toAst(exp.arguments));
+    this.ast = new MethodAST(this.contextRef, exp.name, this._toAst(exp.args));
   }
 
   visitCallMember(exp:CallMember) {
-    this.ast = new MethodAST(this.visit(exp.object), exp.name, this._toAst(exp.arguments));
+    this.ast = new MethodAST(this.visit(exp.object), exp.name, this._toAst(exp.args));
   }
 
   visitAccessScope(exp:AccessScope) {
@@ -81,7 +81,7 @@ class WatchVisitor {
     this.ast = new PureFunctionAST(
       exp.operation,
       operationToFunction(exp.operation),
-      [this.visit(exp.left), visit(exp.right)]
+      [this.visit(exp.left), this.visit(exp.right)]
     );
   }
 
@@ -114,7 +114,7 @@ class WatchVisitor {
   }
 
   visitLiteralString(exp:LiteralString) {
-    ast = new ConstantAST(exp.value);
+    this.ast = new ConstantAST(exp.value);
   }
 
   visitLiteralArray(exp:LiteralArray) {
@@ -141,8 +141,8 @@ class WatchVisitor {
     var filterFunction = this.filters(exp.name);
     var args = [this.visitCollection(exp.expression)];
 
-    args.concat(this._toAst(exp.args).map((ast) => new CollectionAST(ast)));
-    
+    args.push(...this._toAst(exp.args).map((ast) => new CollectionAST(ast)));
+
     this.ast = new PureFunctionAST(
       `|${exp.name}`,
       filterWrapper(filterFunction, args.length), 
@@ -184,7 +184,7 @@ class WatchVisitor {
 
 function operationToFunction(operation:string) {
   switch(operation) {
-    case '!'  : return function(value) { return !!value; };
+    case '!'  : return function(value) { return !value; };
     case '+'  : return function(left, right) { return autoConvertAdd(left, right); };
     case '-'  : return function(left, right) { return (left != null && right != null) ? left - right : (left != null ? left : (right != null ? 0 - right : 0)); };
     case '*'  : return function(left, right) { return (left == null || right == null) ? null : left * right; };
@@ -235,13 +235,13 @@ function autoConvertAdd(a, b) {
 }
 
 // TODO(misko): figure out why do we need to make a copy?
-function arrayFn(existing){
-  return existing.slice();
+function arrayFn(...existing){
+  return existing;
 }
 
 // TODO(misko): figure out why do we need to make a copy instead of reusing instance?
 function mapFn(keys){
-  return function(values){
+  return function(...values){
     assert(values.length == keys.length);
 
     var instance = {},
@@ -260,7 +260,7 @@ function filterWrapper(filterFn, length) {
   var args = [],
       argsWatches = [];
 
-  return function(values){
+  return function(...values){
     for (var i = 0, length = values.length; i < length; i++) {
       var value = values[i];
       var lastValue = args[i];
@@ -273,8 +273,7 @@ function filterWrapper(filterFn, length) {
        }
       }
     }
-
-    var value = filterFn.apply(null, args);
+    var value = filterFn(...args);
 
     //TODO: Is this an optimization we can make?
     //if (value is Iterable) {
