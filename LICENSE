@@ -1,16 +1,3 @@
-[![Build Status](https://travis-ci.org/angular/expressionist.js.png?branch=master)](https://travis-ci.org/angular/expressionist.js)
-![Van gogh lallee des alyscamps](http://upload.wikimedia.org/wikipedia/commons/3/3d/Van_gogh_lallee_des_alyscamps.jpg)
-
-# Angular Expressions
-
-## Develop
-npm install
-karma start
-
-Use 2 spaces as tab, see .editorconfig
-
-## [License](LICENSE)
-
 Copyright 2014 Google, Inc. http://angularjs.org
 
 Licensed under the Apache License, Version 2.0 (the "License");
