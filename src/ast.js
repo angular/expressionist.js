@@ -2,6 +2,11 @@ import {ArrayOfString} from './types';
 import {assert} from 'assert';
 
 export class Expression {
+  constructor(){
+    this.isChain = false;
+    this.isAssignable = false;
+  }
+
   eval(){
     throw new Error(`Cannot evaluate ${this}`);
   }
@@ -59,6 +64,8 @@ export class BoundExpression {
 
 export class Chain extends Expression {
   constructor(expressions:ArrayOfExpression){
+    super();
+
     this.expressions = expressions;
     this.isChain = true;
   }
@@ -87,6 +94,8 @@ export class Chain extends Expression {
 
 export class Filter extends Expression {
   constructor(expression:Expression, name:string, args:ArrayOfExpression, allArgs:ArrayOfExpression){
+    super();
+
     this.expression = expression;
     this.name = name;
     this.args = args;
@@ -109,6 +118,8 @@ export class Filter extends Expression {
 
 export class Assign extends Expression {
   constructor(target:Expression, value:Expression){
+    super();
+
     this.target = target;
     this.value = value;
   }
@@ -124,6 +135,8 @@ export class Assign extends Expression {
 
 export class Conditional extends Expression {
   constructor(condition:Expression, yes:Expression, no:Expression){
+    super();
+
     this.condition = condition;
     this.yes = yes;
     this.no = no;
@@ -140,6 +153,8 @@ export class Conditional extends Expression {
 
 export class AccessScope extends Expression {
   constructor(name:string){
+    super();
+
     this.name = name;
     this.isAssignable = true;
   }
@@ -159,6 +174,8 @@ export class AccessScope extends Expression {
 
 export class AccessMember extends Expression {
   constructor(object:Expression, name:string){
+    super();
+
     this.object = object;
     this.name = name;
     this.isAssignable = true;
@@ -187,6 +204,8 @@ export class AccessMember extends Expression {
 
 export class AccessKeyed extends Expression {
   constructor(object:Expression, key:Expression){
+    super();
+
     this.object = object;
     this.key = key;
     this.isAssignable = true;
@@ -211,6 +230,8 @@ export class AccessKeyed extends Expression {
 
 export class CallScope extends Expression {
   constructor(name:string, args:ArrayOfExpression){
+    super();
+
     this.name = name;
     this.args = args;
   }
@@ -227,6 +248,8 @@ export class CallScope extends Expression {
 
 export class CallMember extends Expression {
   constructor(object:Expression, name:string, args:ArrayOfExpression){
+    super();
+
     this.object = object;
     this.name = name;
     this.args = args;
@@ -245,6 +268,8 @@ export class CallMember extends Expression {
 
 export class CallFunction extends Expression {
   constructor(func:Expression,args:ArrayOfExpression){
+    super();
+
     this.func = func;
     this.args = args;
   }
@@ -266,6 +291,8 @@ export class CallFunction extends Expression {
 
 export class Binary extends Expression {
   constructor(operation:string, left:Expression, right:Expression){
+    super();
+
     this.operation = operation;
     this.left = left;
     this.right = right;
@@ -324,6 +351,8 @@ export class Binary extends Expression {
 
 export class PrefixNot extends Expression {
   constructor(operation:string, expression:Expression){
+    super();
+
     this.operation = operation;
     this.expression = expression;
   }
@@ -339,6 +368,8 @@ export class PrefixNot extends Expression {
 
 export class LiteralPrimitive extends Expression {
   constructor(value){
+    super();
+
     this.value = value;
   }
 
@@ -353,6 +384,8 @@ export class LiteralPrimitive extends Expression {
 
 export class LiteralString extends Expression {
   constructor(value:string){
+    super();
+
     this.value = value;
   }
 
@@ -367,6 +400,8 @@ export class LiteralString extends Expression {
 
 export class LiteralArray extends Expression {
   constructor(elements:ArrayOfExpression){
+    super();
+
     this.elements = elements;
   }
 
@@ -390,6 +425,8 @@ export class LiteralArray extends Expression {
 
 export class LiteralObject extends Expression {
   constructor(keys:ArrayOfString, values:ArrayOfExpression){
+    super();
+    
     this.keys = keys;
     this.values = values;
   }
