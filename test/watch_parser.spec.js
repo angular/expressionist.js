@@ -128,8 +128,7 @@ describe('AST Bridge', ()=>{
     expect(logger.toArray()).toEqual([null, null, 6, 5, -4, 3, 0, 0, true, false]);
   });
 
-  /* TODO: Why does this not work? */
-  xit('should invoke closures', ()=> {
+  it('should invoke closures', ()=> {
     context['fn'] = ()=>{
       logger.log('fn');
       return 1;
@@ -141,8 +140,7 @@ describe('AST Bridge', ()=>{
     watch('fn()', (value, previous) => { logger.log(`=> ${value}`); });
     watch('a.fn()', (value, previous) => { logger.log(`-> ${value}`); });
     detectChanges();
-    expect(logger.toArray()).toEqual(['fn', 'a.fn', '=> 1', '-> 2',
-    /*second loop*/ 'fn', 'a.fn']);
+    expect(logger.toArray()).toEqual(['fn', 'a.fn', '=> 1', '-> 2']);
     logger.clear();
     detectChanges();
     expect(logger.toArray()).toEqual(['fn', 'a.fn']);
