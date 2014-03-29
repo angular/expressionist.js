@@ -129,7 +129,7 @@ describe('AST Bridge', ()=>{
   });
 
   /* TODO: Why does this not work? */
-  xit('should invoke closures', ()=> {
+  it('should invoke closures', ()=> {
     context['fn'] = ()=>{
       logger.log('fn');
       return 1;
@@ -141,8 +141,7 @@ describe('AST Bridge', ()=>{
     watch('fn()', (value, previous) => { logger.log(`=> ${value}`); });
     watch('a.fn()', (value, previous) => { logger.log(`-> ${value}`); });
     detectChanges();
-    expect(logger.toArray()).toEqual(['fn', 'a.fn', '=> 1', '-> 2',
-    /*second loop*/ 'fn', 'a.fn']);
+    expect(logger.toArray()).toEqual(['fn', 'a.fn', '=> 1', '-> 2']);
     logger.clear();
     detectChanges();
     expect(logger.toArray()).toEqual(['fn', 'a.fn']);
@@ -160,7 +159,6 @@ describe('AST Bridge', ()=>{
     detectChanges();
     expect(logger.toArray()).toEqual([3]);
   });
-
 
   xit('should call function', ()=> {
     context['a'] = ()=>{
@@ -183,7 +181,6 @@ describe('AST Bridge', ()=>{
     detectChanges();
     expect(logger.toArray()).toEqual([]);
   });
-
 
   it('should prefix', ()=> {
     context['a'] = true;
@@ -211,7 +208,7 @@ describe('AST Bridge', ()=>{
   });
 
   /* TODO: Why does this not work? */
-  xit('should support arrays in filters', ()=>{
+  it('should support arrays in filters', ()=>{
     context['a'] = [1];
     watchWithFilters('a | sort | listHead:"A" | listTail:"B"', filters,
             (value, previous) => { logger.log(value) });
@@ -223,7 +220,7 @@ describe('AST Bridge', ()=>{
     expect(logger.toArray()).toEqual([]);
     logger.clear();
 
-    context['a'].add(2);
+    context['a'].push(2);
     detectChanges();
     expect(logger.toArray()).toEqual(['sort', 'listHead', 'listTail', ['A', 1, 2, 'B']]);
     logger.clear();
@@ -237,7 +234,7 @@ describe('AST Bridge', ()=>{
   });
 
   /* TODO: Why does this not work? */
-  xit('should support maps in filters', ()=> {
+  it('should support maps in filters', ()=> {
     context['a'] = {'foo': 'bar'};
     watchWithFilters('a | identity | keys', filters, 
         (value, previous) => logger.log(value));
@@ -280,7 +277,9 @@ function filters(name){
     case 'listTail':
       return function(list, tail){
         logger.log(name);
-        return [].concat(list).push(tail);
+        var arr = [].concat(list)
+        arr.push(tail);
+        return arr;
       }
     case 'sort':
       return function(list){

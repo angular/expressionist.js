@@ -242,11 +242,11 @@ function arrayFn(...existing){
 // TODO(misko): figure out why do we need to make a copy instead of reusing instance?
 function mapFn(keys){
   return function(...values){
-    assert(values.length == keys.length);
-
     var instance = {},
         length = keys.length,
         i;
+
+    assert(values.length == length);
 
     for(i = 0; i < length; i++){
       instance[keys[i]] = values[i];
@@ -273,6 +273,7 @@ function filterWrapper(filterFn, length) {
        }
       }
     }
+
     var value = filterFn(...args);
 
     //TODO: Is this an optimization we can make?
