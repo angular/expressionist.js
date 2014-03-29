@@ -1,7 +1,7 @@
 import {AST, ContextReferenceAST, CollectionAST, MethodAST,
-        FieldReadAST, PureFunctionAST, ConstantAST} from 'watchtower/ast';
+        FieldReadAST, PureFunctionAST, ConstantAST} from 'watchtower';
 
-import {CollectionChangeRecord} from 'watchtower/change_detection';
+import {CollectionChangeRecord} from 'watchtower';
 
 import {Parser} from './parser';
 

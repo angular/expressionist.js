@@ -17,8 +17,13 @@ require.config({
   baseUrl: '/base',
 
   paths: {
-    'watchtower': './node_modules/watchtower/dist/amd',
-    'assert': './node_modules/pipe/node_modules/assert/dist/amd/assert'
+    'assert': './node_modules/pipe/node_modules/assert/dist/amd/assert',
+    'node_modules': './node_modules'
+  },
+  map: {
+    '*': {
+      'watchtower': 'node_modules/watchtower/dist/amd/index'
+    }
   },
 
   // Dynamically load all test files and ES6 polyfill.

@@ -4,12 +4,12 @@ import {Parser} from '../src/parser';
 import {
   GetterCache,
   DirtyCheckingChangeDetector
-} from 'watchtower/dirty_checking';
+} from 'watchtower';
 
 import {
   WatchGroup,
   RootWatchGroup
-} from 'watchtower/watch_group';
+} from 'watchtower';
 
 class Logger {
   constructor() {
