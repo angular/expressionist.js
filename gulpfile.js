@@ -15,7 +15,13 @@ gulp.task('build_source_amd', function() {
       .pipe(gulp.dest('dist/amd'));
 });
 
-gulp.task('build', ['build_source_amd']);
+gulp.task('build_source_cjs', function() {
+  gulp.src(path.src)
+      .pipe(pipe.traceur({modules: 'commonjs'}))
+      .pipe(gulp.dest('dist/cjs'));
+});
+
+gulp.task('build', ['build_source_cjs', 'build_source_amd']);
 
 
 // WATCH FILES FOR CHANGES
