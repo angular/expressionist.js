@@ -1,4 +1,5 @@
 var gulp = require('gulp');
+var traceur = require('gulp-traceur');
 var pipe = require('pipe/gulp');
 var connect = require('gulp-connect');
 
@@ -11,17 +12,23 @@ var path = {
 // TRANSPILE ES6
 gulp.task('build_source_amd', function() {
   gulp.src(path.src)
-      .pipe(pipe.traceur())
+      .pipe(traceur(pipe.traceur()))
       .pipe(gulp.dest('dist/amd'));
 });
 
 gulp.task('build_source_cjs', function() {
   gulp.src(path.src)
-      .pipe(pipe.traceur({modules: 'commonjs'}))
+      .pipe(traceur(pipe.traceur({modules: 'commonjs'})))
       .pipe(gulp.dest('dist/cjs'));
 });
 
-gulp.task('build', ['build_source_cjs', 'build_source_amd']);
+gulp.task('build_source_es6', function() {
+  gulp.src(path.src)
+      .pipe(traceur(pipe.traceur({outputLanguage: 'es6'})))
+      .pipe(gulp.dest('dist/es6'));
+});
+
+gulp.task('build', ['build_source_cjs', 'build_source_amd', 'build_source_es6']);
 
 
 // WATCH FILES FOR CHANGES
