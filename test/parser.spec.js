@@ -24,7 +24,12 @@ describe('parser', () => {
 
     it('should parse unary - expressions', () => {
       expect(evaluate("-1")).toEqual(-1);
+    });
+
+    it('should parse unary + expressions', () => {
       expect(evaluate("+1")).toEqual(1);
+      expect(evaluate("+'1'")).toEqual(1);
+      expect(evaluate("+'not a number'")).toEqual(NaN);
     });
 
     it('should parse unary ! expressions', () => {
