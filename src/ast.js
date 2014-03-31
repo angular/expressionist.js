@@ -1,5 +1,5 @@
 import {ArrayOfString} from './types';
-import {assert} from 'assert';
+import {assert} from 'rtts-assert';
 
 export class Expression {
   constructor(){
