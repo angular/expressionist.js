@@ -17,7 +17,7 @@ require.config({
   baseUrl: '/base',
 
   paths: {
-    'assert': './node_modules/pipe/node_modules/assert/dist/amd/assert',
+    'rtts-assert': './node_modules/assert/dist/amd/assert',
     'node_modules': './node_modules'
   },
   map: {
