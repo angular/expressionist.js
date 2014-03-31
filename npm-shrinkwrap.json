@@ -1,6 +1,6 @@
 {
   "name": "expressionist",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "gulp-traceur": {
       "version": "0.4.0",
@@ -19,6 +19,61 @@
           "from": "git://github.com/vojtajina/traceur-compiler#add-es6-pure-transformer-dist"
         }
       }
+    },
+    "es6-shim": {
+      "version": "0.9.3",
+      "from": "es6-shim@~0.9.2"
+    },
+    "gulp": {
+      "version": "3.6.0",
+      "from": "gulp@^3.5.6"
+    },
+    "gulp-connect": {
+      "version": "1.0.10",
+      "from": "gulp-connect@~1.0.5"
+    },
+    "gulp-traceur": {
+      "version": "0.4.0",
+      "from": "gulp-traceur@~0.4.0"
+    },
+    "karma": {
+      "version": "0.12.2",
+      "from": "karma@^0.12.1"
+    },
+    "karma-chrome-launcher": {
+      "version": "0.1.2",
+      "from": "karma-chrome-launcher@^0.1.2"
+    },
+    "karma-jasmine": {
+      "version": "0.2.2",
+      "from": "karma-jasmine@^0.2.2"
+    },
+    "karma-requirejs": {
+      "version": "0.2.1",
+      "from": "karma-requirejs@^0.2.1"
+    },
+    "karma-traceur-preprocessor": {
+      "version": "0.2.2",
+      "from": "karma-traceur-preprocessor@^0.2.2"
+    },
+    "pipe": {
+      "version": "0.0.0",
+      "from": "pipe@git://github.com/angular/pipe#remove-transitive-deps",
+      "resolved": "git://github.com/angular/pipe#997f1cda184869ea836e6499188881e8276908a3"
+    },
+    "requirejs": {
+      "version": "2.1.11",
+      "from": "requirejs@2.1.11"
+    },
+    "rtts-assert": {
+      "version": "0.0.1",
+      "from": "rtts-assert@git://github.com/angular/assert#dist-rename",
+      "resolved": "git://github.com/angular/assert#0272a0eabd3c756c1d3d52d4f959f48d936a066f"
+    },
+    "watchtower": {
+      "version": "0.0.1",
+      "from": "watchtower@git://github.com/angular/watchtower.js#dist",
+      "resolved": "git://github.com/angular/watchtower.js#ab607438ef41066cda8f3302d08b76662577635a"
     }
   }
 }
