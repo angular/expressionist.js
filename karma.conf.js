@@ -22,5 +22,5 @@ module.exports = function(config) {
     }
   });
 
-  config.sauceLabs.testName = 'templating';
+  config.sauceLabs.testName = 'AngularJS v2 - expressionist';
 };
