@@ -9,14 +9,16 @@ module.exports = function(config) {
       'test-main.js',
       {pattern: 'src/**/*.js', included: false},
       {pattern: 'test/**/*.js', included: false},
-      {pattern: 'node_modules/rtts-assert/dist/amd/**/*.js', included: false},
-      {pattern: 'node_modules/watchtower/dist/amd/**/*.js', included: false},
+      {pattern: 'node_modules/rtts-assert/src/**/*.js', included: false},
+      {pattern: 'node_modules/watchtower/src/**/*.js', included: false},
       {pattern: 'node_modules/es6-shim/es6-shim.js', included: false}
     ],
 
     preprocessors: {
       'src/**/*.js': ['traceur'],
       'test/**/*.js': ['traceur'],
+      'node_modules/watchtower/src/**/*.js': ['traceur'],
+      'node_modules/rtts-assert/src/**/*.js': ['traceur']
     }
   });
 

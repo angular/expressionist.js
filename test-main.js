@@ -17,12 +17,12 @@ require.config({
   baseUrl: '/base',
 
   paths: {
-    'rtts-assert': './node_modules/rtts-assert/dist/amd/assert',
+    'rtts-assert': './node_modules/rtts-assert/src/assert',
     'node_modules': './node_modules'
   },
   map: {
     '*': {
-      'watchtower': 'node_modules/watchtower/dist/amd/index'
+      'watchtower': 'node_modules/watchtower/src/index'
     }
   },
 
