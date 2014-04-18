@@ -2,7 +2,7 @@
   "name": "expressionist",
   "version": "0.0.1",
   "description": "Expression parser and evaluator for Angular 2.0.",
-  "main": "node/index.js",
+  "main": "dist/cjs/index.js",
   "homepage": "https://github.com/angular/expressionist.js",
   "repository": {
     "type": "git",
