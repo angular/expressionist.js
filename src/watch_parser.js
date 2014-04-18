@@ -171,7 +171,7 @@ class WatchVisitor {
     this._notSupported(';');
   }
 
-  _notSupported(name:name) {
+  _notSupported(name:string) {
     throw new Error(`Can not watch expression containing '${name}'.`);
   }
 
