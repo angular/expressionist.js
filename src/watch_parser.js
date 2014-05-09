@@ -1,3 +1,6 @@
+// TODO(vojta): use only di-annotations
+import {Inject} from 'di';
+
 import {AST, ContextReferenceAST, CollectionAST, MethodAST,
         FieldReadAST, PureFunctionAST, ConstantAST} from 'watchtower';
 
@@ -12,6 +15,7 @@ import {Expression,ArrayOfExpression,Chain,Filter,Assign,
 
 var scopeContextRef = new ContextReferenceAST();
 
+@Inject
 export class WatchParser {
   constructor(parser:Parser){
     this._parser = parser;

@@ -1,3 +1,6 @@
+// TODO(vojta): use only di-annotations
+import {Inject} from 'di';
+
 import {Lexer,Token} from './lexer';
 import {Expression,ArrayOfExpression,Chain,Filter,Assign,
         Conditional, AccessScope, AccessMember, AccessKeyed, 
@@ -6,6 +9,7 @@ import {Expression,ArrayOfExpression,Chain,Filter,Assign,
 
 var EOF = new Token(-1, null);
 
+@Inject
 export class Parser {
   constructor(){
     this.cache = {};
