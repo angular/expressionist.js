@@ -3,10 +3,6 @@ import {Parser} from '../src/parser';
 
 import {
   GetterCache,
-  DirtyCheckingChangeDetector
-} from 'watchtower';
-
-import {
   WatchGroup,
   RootWatchGroup
 } from 'watchtower';
@@ -32,13 +28,12 @@ class Logger {
     return `${this._list.join(";")}`;
   }
 }
-var context, watchGrp, detector, parser, watchParser, logger;
+var context, watchGrp, parser, watchParser, logger;
 
 describe('AST Bridge', ()=>{
   beforeEach(()=>{
     context = {};
-    detector = new DirtyCheckingChangeDetector(new GetterCache({}));
-    watchGrp = new RootWatchGroup(detector, context);
+    watchGrp = new RootWatchGroup(new GetterCache({}), null, context);
     parser = new Parser();
     watchParser = new WatchParser(parser);
     logger = new Logger();
@@ -46,12 +41,12 @@ describe('AST Bridge', ()=>{
 
   function watch(expr, callback) {
     var watchAst = watchParser.parse(expr, []);
-    watchGrp.watch(watchAst, callback);    
+    watchGrp.watchExpression(watchAst, callback);    
   }
 
   function watchWithFilters(expr, filters, callback) {
     var watchAst = watchParser.parse(expr, filters);
-    watchGrp.watch(watchAst, callback);    
+    watchGrp.watchExpression(watchAst, callback);    
   }
 
   function detectChanges() {
