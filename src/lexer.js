@@ -1,3 +1,5 @@
+import {assert} from 'rtts-assert';
+
 export class Token {
   constructor(index:number, text:string){
     this.index = index;
@@ -421,11 +423,5 @@ function unescape(code) {
     case $t: return $TAB;
     case $v: return $VTAB;
     default: return code;
-  }
-}
-
-function assert(condition, message) {
-  if (!condition) {
-    throw message || "Assertion failed";
   }
 }
