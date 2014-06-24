@@ -22,7 +22,8 @@ require.config({
   },
   map: {
     '*': {
-      'watchtower': 'node_modules/watchtower/src/index'
+      'watchtower': 'node_modules/watchtower/src/index',
+      'di': 'node_modules/di/src/index'
     }
   },
 
