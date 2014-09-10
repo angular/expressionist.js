@@ -310,6 +310,7 @@ export class Binary extends Expression {
 
     // Null check for the operations.
     if (left == null || right == null) {
+
       switch (this.operation) {
         case '+':
           if (left != null) return left;
@@ -359,6 +360,24 @@ export class PrefixNot extends Expression {
 
   eval(scope, filters=defaultFilterMap){
     return !this.expression.eval(scope);
+  }
+
+  accept(visitor){
+    visitor.visitPrefix(this);
+  }
+}
+
+
+export class PrefixPlus extends Expression {
+  constructor(operation:string, expression:Expression){
+    super();
+
+    this.operation = operation;
+    this.expression = expression;
+  }
+
+  eval(scope, filters=defaultFilterMap){
+    return +this.expression.eval(scope);
   }
 
   accept(visitor){

@@ -1,7 +1,7 @@
 import {Lexer,Token} from './lexer';
 import {Expression,ArrayOfExpression,Chain,Filter,Assign,
         Conditional, AccessScope, AccessMember, AccessKeyed, 
-        CallScope, CallFunction, CallMember, PrefixNot,
+        CallScope, CallFunction, CallMember, PrefixNot, PrefixPlus,
         Binary, LiteralPrimitive, LiteralArray, LiteralObject, LiteralString} from './ast';
 
 var EOF = new Token(-1, null);
@@ -205,7 +205,7 @@ export class ParserImplementation {
 
   parsePrefix():Expression {
     if (this.optional('+')) { 
-      return this.parsePrefix(); // TODO(kasperl): This is different than the original parser.
+      return new PrefixPlus('+', this.parsePrefix());
     } else if (this.optional('-')) {
       return new Binary('-', new LiteralPrimitive(0), this.parsePrefix());
     } else if (this.optional('!')) {
